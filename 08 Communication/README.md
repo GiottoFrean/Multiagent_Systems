@@ -2,6 +2,8 @@
 
 So far we've assumed agents observe actions but don't communicate directly. This section explores when and how communication matters in strategic settings.
 
+The notebooks roughly split communication into *informational* views (messages update beliefs) and *motivational/strategic* views (messages/actions are chosen to influence others).
+
 ---
 
 ## A - Doing by Talking I (Cheap Talk)

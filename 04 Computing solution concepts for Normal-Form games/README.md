@@ -6,7 +6,11 @@ Unfortunately, computing Nash equilibria is computationally challenging - it bel
 
 ## A - Computing Nash Equilibria
 
-For two-player zero-sum games, finding Nash equilibria reduces to solving a linear program. But for general games the problem is harder - this notebook focuses on the Lemke-Howson algorithm. The key insight: at equilibrium, each player's strategy can be "labelled" with their zero-probability actions plus the other player's best responses. An equilibrium occurs where the union of these labels covers all actions. Unintuitive!
+This notebook starts with the easy case: two-player, zero-sum games, where computing a Nash equilibrium reduces to solving a linear program.
+
+It then moves to general two-player games, where equilibrium computation is harder. The notebook introduces an LCP (linear complementarity problem) formulation and the Lemke-Howson algorithm as a pivoting method for finding equilibria.
+
+One of the key geometric ideas is the “labelling” view: at equilibrium, each mixed strategy is labelled by its zero-probability actions and the opponent’s best-response actions, and an equilibrium occurs where the combined labels cover all actions.
 
 The notebook visualizes this labelling process:
 
