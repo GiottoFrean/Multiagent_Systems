@@ -9,7 +9,7 @@ Normal-form games assume simultaneous moves. This section introduces extensive-f
 Games where every player knows the complete history (like chess). The game is a tree with decision nodes, actions, and payoffs. Any extensive-form game can be converted to normal-form, but this can introduce problematic Nash equilibria involving non-credible threats. Subgame-perfect equilibrium is a refinement that requires Nash equilibrium in every subgame. Backward induction computes subgame-perfect equilibria efficiently by working backwards from the leaves:
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="500"/>
+  <img src="../images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="300"/>
 </p>
 <p align="center"><em>Backward induction solving a game tree (green annotations show calculated values).</em></p>
 

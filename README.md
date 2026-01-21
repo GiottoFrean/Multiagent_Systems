@@ -1,10 +1,15 @@
+# Multiagent Systems - Learning Notes
+
+This repository contains my notes and explorations while learning from the book **Multiagent Systems** by Yoav Shoham and Kevin Leyton-Brown. Each folder corresponds to a chapter or topic from the book, with Jupyter notebooks working through the concepts, algorithms, and examples.
+
+---
 
 
 ## 01 Distributed Constraint Satisfaction
 
 # Distributed Constraint Satisfaction
 
-Distributed constraint satisfaction is about how agents with independent limitations can come to a solution where nobody has their requirements violated.
+Distributed constraint satisfaction addresses how agents with independent constraints can collectively reach a solution that satisfies all requirements.
 
 Imagine a network of cell towers, where each tower needs to use a different frequency to those nearby. You can think of this as a graph coloring problem, where the frequencies are the colors.
 
@@ -252,7 +257,7 @@ Normal-form games assume simultaneous moves. This section introduces extensive-f
 Games where every player knows the complete history (like chess). The game is a tree with decision nodes, actions, and payoffs. Any extensive-form game can be converted to normal-form, but this can introduce problematic Nash equilibria involving non-credible threats. Subgame-perfect equilibrium is a refinement that requires Nash equilibrium in every subgame. Backward induction computes subgame-perfect equilibria efficiently by working backwards from the leaves:
 
 <p align="center">
-  <img src="images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="500"/>
+  <img src="images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="300"/>
 </p>
 <p align="center"><em>Backward induction solving a game tree (green annotations show calculated values).</em></p>
 

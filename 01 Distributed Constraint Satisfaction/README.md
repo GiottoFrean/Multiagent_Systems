@@ -1,6 +1,6 @@
 # Distributed Constraint Satisfaction
 
-Distributed constraint satisfaction is about how agents with independent limitations can come to a solution where nobody has their requirements violated.
+Distributed constraint satisfaction addresses how agents with independent constraints can collectively reach a solution that satisfies all requirements.
 
 Imagine a network of cell towers, where each tower needs to use a different frequency to those nearby. You can think of this as a graph coloring problem, where the frequencies are the colors.
 
