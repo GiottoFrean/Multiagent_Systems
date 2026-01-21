@@ -14,15 +14,11 @@ The notebooks are organized into 10 major topics, each building on previous conc
 
 How can independent agents coordinate to satisfy constraints without a central controller? Uses graph coloring as the running example (e.g., cell towers selecting frequencies). Covers domain-pruning algorithms, hyper-resolution, heuristic search, and the asynchronous backtracking algorithm.
 
-**Key Insight**: Agents can solve constraint problems distributedly, but complete algorithms like hyper-resolution are expensive. Asynchronous backtracking provides a practical middle ground.
-
 ---
 
 ## [2. Distributed Optimization](2%20Distributed%20Optimization/)
 
 Extends constraint satisfaction to optimization - finding the *best* solution, not just any valid one. Covers dynamic programming for path-finding, MDPs for stochastic environments, linear programming, competitive equilibrium, and auctions.
-
-**Key Insight**: Many distributed optimization problems can be solved by finding competitive equilibrium prices that decentralize decisions while maintaining global efficiency.
 
 ---
 
@@ -30,15 +26,11 @@ Extends constraint satisfaction to optimization - finding the *best* solution, n
 
 Introduces game theory foundations: utility theory, normal-form games, classic games (Prisoner's Dilemma, Battle of the Sexes), Pareto optimality, and Nash equilibrium. Shows that rational self-interested behavior can lead to suboptimal outcomes.
 
-**Key Insight**: Nash equilibrium (where no agent can improve by changing strategy alone) is the central solution concept, but it doesn't always align with social welfare.
-
 ---
 
 ## [4. Computing Solution Concepts for Normal-Form Games](4%20Computing%20solution%20concepts%20for%20Normal-Form%20games/)
 
 Unfortunately, computing Nash equilibria is computationally hard (PPAD-complete). Covers algorithms for specific game classes: linear programming for zero-sum games, support enumeration, Lemke-Howson algorithm, dominated strategy elimination, and correlated equilibria.
-
-**Key Insight**: Zero-sum games are "easy" (LP solvable), but general games require sophisticated algorithms. Correlated equilibria are easier to compute than Nash equilibria.
 
 ---
 
@@ -46,15 +38,11 @@ Unfortunately, computing Nash equilibria is computationally hard (PPAD-complete)
 
 Moves beyond simultaneous-move games to sequential decision-making. Covers perfect-information extensive-form games, backward induction, subgame-perfect equilibrium, imperfect information with information sets, and the sequence form for computational efficiency.
 
-**Key Insight**: Subgame perfection rules out non-credible threats. The sequence form enables efficient computation for imperfect-information games (crucial for poker-playing AIs).
-
 ---
 
 ## [6. Richer Representations - Beyond the Normal and Extensive Forms](6%20Richer%20Representations%20-%20Beyond%20the%20Normal%20and%20Extensive%20Forms/)
 
 Extends basic game models to capture more complex scenarios: repeated games and the folk theorem, finite automata strategies, stochastic games, Bayesian games with private information, congestion games, and compact representations (graphical games).
-
-**Key Insight**: Repeated interaction enables cooperation even in Prisoner's Dilemma. Private information (Bayesian games) is fundamental for auctions and mechanism design.
 
 ---
 
@@ -62,15 +50,11 @@ Extends basic game models to capture more complex scenarios: repeated games and 
 
 Learning in multiagent systems is fundamentally different from single-agent learning because the environment changes as other agents adapt. Covers fictitious play, rational learning, reinforcement learning, no-regret learning, and evolutionary dynamics.
 
-**Key Insight**: It's key that players teach/learn from each other. No single "correct" learning algorithm exists - the right choice depends on assumptions about other agents.
-
 ---
 
 ## [8. Communication](8%20Communication/)
 
 When can agents benefit from communication? Covers cheap talk (costless but potentially uninformative), signaling games (costly signals that credibly reveal information), and speech-act theory (commitments and revelation).
-
-**Key Insight**: Communication only matters when it's either credible (signaling) or helps coordinate among multiple equilibria. In Prisoner's Dilemma, talk is cheap and changes nothing.
 
 ---
 
@@ -78,15 +62,11 @@ When can agents benefit from communication? Covers cheap talk (costless but pote
 
 How do we aggregate individual preferences into collective decisions? Covers voting systems, Arrow's impossibility theorem, Condorcet winners, and the fundamental tension between different desirable properties.
 
-**Key Insight**: Arrow's theorem shows no voting system can simultaneously satisfy all desirable properties. The best is quadratic voting, and nothing much more needs to be said!
-
 ---
 
 ## [10. Protocols for Strategic Agents - Mechanism Design](10%20Protocols%20for%20Strategic%20Agents%20-%20Mechanism%20Design/)
 
 Inverts game theory: instead of analyzing existing games, design new ones to achieve desired outcomes. Covers the revelation principle, Gibbard-Satterthwaite impossibility, Vickrey auctions, and VCG mechanisms.
-
-**Key Insight**: With transferable utility (money), we can design mechanisms that are truthful, efficient, and individually rational. VCG mechanisms are the gold standard.
 
 ---
 
