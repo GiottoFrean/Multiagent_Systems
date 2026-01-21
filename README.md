@@ -15,19 +15,19 @@ Imagine a network of cell towers, where each tower needs to use a different freq
 This notebook introduces domain pruning, where each node eliminates values from its domain that can't possibly work. It goes something like this:
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img1.png" alt="Filtering steps 1" width="320"/>
+  <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img1.png" alt="Filtering steps 1" width="320"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img3.png" alt="Filtering steps 2" width="320"/>
+  <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img3.png" alt="Filtering steps 2" width="320"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img5.png" alt="Filtering steps 3" width="320"/>
+  <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img5.png" alt="Filtering steps 3" width="320"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img7.png" alt="Filtering steps 4" width="320"/>
+  <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img7.png" alt="Filtering steps 4" width="320"/>
 </p>
 <p align="center"><em>Filtering algorithm progressively reducing domains until a solution is found.</em></p>
 
@@ -50,23 +50,23 @@ One *centralised* option is to do a recursive search of values, backtracking whe
 The asynchonous backtracking algorithm can be thought of as a greedy version of the hyper-resolution algorithm, meeting somewhere between the two previous ideas. Essentially, we want every node to be trying to find a value, and then backtracking by sending a 'nogood' when it can't.
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img1.png" alt="ABT step 1" width="700"/>
+  <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img1.png" alt="ABT step 1" width="700"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img3.png" alt="ABT step 2" width="700"/>
+  <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img3.png" alt="ABT step 2" width="700"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img5.png" alt="ABT step 3" width="700"/>
+  <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img5.png" alt="ABT step 3" width="700"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img7.png" alt="ABT step 4" width="700"/>
+  <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img7.png" alt="ABT step 4" width="700"/>
 </p>
 
 <p align="center">
-  <img src="../images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img9.png" alt="ABT step 5" width="700"/>
+  <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img9.png" alt="ABT step 5" width="700"/>
 </p>
 <p align="center"><em>Asynchronous backtracking progressively finding a solution through message passing.</em></p>
 
@@ -84,13 +84,13 @@ Distributed Optimization is about how agents with different information can opti
 This notebook explores distributed approaches to the shortest path problem. While Dijkstra's algorithm builds paths outward by always selecting the node with the shortest distance, asynchronous dynamic programming allows nodes to update their distance estimates in any order and still converge to the optimal solution. 
 
 <p align="center">
-  <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
-  <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
+  <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
+  <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
 </p>
 
 <p align="center">
-  <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img9.png" alt="DP iteration 5" width="700"/>
-  <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img13.png" alt="DP iteration 7" width="700"/>
+  <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img9.png" alt="DP iteration 5" width="700"/>
+  <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img13.png" alt="DP iteration 7" width="700"/>
 </p>
 <p align="center"><em>Asynchronous dynamic programming progressively finding shortest paths.</em></p>
 
@@ -103,7 +103,7 @@ The notebook also covers Learning Real-Time A* (LRTA*), where multiple agents ex
 This notebook reviews Markov Decision Processes (MDPs), which extend path-finding to stochastic environments. The Bellman equation provides the optimal value function and is proven to be a contraction mapping. A go-kart racing example demonstrates the concepts:
 
 <p align="center">
-  <img src="../images/02 Distributed Optimization/B - Review MDPs_cell7_img1.png" alt="Go-kart MDP" width="500"/>
+  <img src="images/02 Distributed Optimization/B - Review MDPs_cell7_img1.png" alt="Go-kart MDP" width="500"/>
 </p>
 <p align="center"><em>Go-kart racing MDP with two lanes and stochastic transitions.</em></p>
 
@@ -114,7 +114,7 @@ This notebook reviews Markov Decision Processes (MDPs), which extend path-findin
 When multiple agents coordinate in an MDP, the state space becomes huge. This notebook explores variable elimination to reduce complexity by factorizing the value function when agents have sparse dependencies. The key insight is that if agent i's Q-function only depends on actions of agents i and i+1, we can pass messages forward to find optimal joint actions efficiently. An example shows agents choosing positions where each gets utility from their choice plus a bonus for aligning with the next agent:
 
 <p align="center">
-  <img src="../images/02 Distributed Optimization/C - Action selection in multiagent MDPs_cell3_img1.png" alt="Multiagent coordination" width="700"/>
+  <img src="images/02 Distributed Optimization/C - Action selection in multiagent MDPs_cell3_img1.png" alt="Multiagent coordination" width="700"/>
 </p>
 <p align="center"><em>Agents coordinating positions with variable elimination.</em></p>
 
@@ -170,7 +170,7 @@ A normal-form game consists of players, actions, and payoff functions. Games are
 The notebook introduces classic games like Prisoner's Dilemma: If both cooperate they get 5 each. If one cooperates and one defects, one gets 8 and the other gets 0. If both defect they get 2. The best option is (C,C) but the outcome is (D,D).
 
 <p align="center">
-  <img src="../images/03 Introduction to Noncooperative Game Theory - Games in Normal Form/B - Games in normal form_cell3_img2.png" alt="Mixed strategy heatmap" width="700"/>
+  <img src="images/03 Introduction to Noncooperative Game Theory - Games in Normal Form/B - Games in normal form_cell3_img2.png" alt="Mixed strategy heatmap" width="700"/>
 </p>
 <p align="center"><em>Heatmap showing utilities for different mixed strategy combinations.</em></p>
 
@@ -202,13 +202,13 @@ For two-player zero-sum games, finding Nash equilibria reduces to solving a line
 The notebook visualizes this labelling process:
 
 <p align="center">
-  <img src="../images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell6_img1.png" alt="Player 2 utility curves" width="400"/>
-  <img src="../images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell8_img1.png" alt="Player 1 labelling" width="400"/>
+  <img src="images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell6_img1.png" alt="Player 2 utility curves" width="400"/>
+  <img src="images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell8_img1.png" alt="Player 1 labelling" width="400"/>
 </p>
 
 <p align="center">
-  <img src="../images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell10_img1.png" alt="Player 1 utility curves" width="400"/>
-  <img src="../images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell12_img1.png" alt="Player 2 labelling" width="400"/>
+  <img src="images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell10_img1.png" alt="Player 1 utility curves" width="400"/>
+  <img src="images/04 Computing solution concepts for Normal-Form games/A - Computing Nash equilibria_cell12_img1.png" alt="Player 2 labelling" width="400"/>
 </p>
 <p align="center"><em>Lemke-Howson algorithm: utility curves show best responses, labelling diagrams identify equilibrium points where all actions are covered.</em></p>
 
@@ -252,7 +252,7 @@ Normal-form games assume simultaneous moves. This section introduces extensive-f
 Games where every player knows the complete history (like chess). The game is a tree with decision nodes, actions, and payoffs. Any extensive-form game can be converted to normal-form, but this can introduce problematic Nash equilibria involving non-credible threats. Subgame-perfect equilibrium is a refinement that requires Nash equilibrium in every subgame. Backward induction computes subgame-perfect equilibria efficiently by working backwards from the leaves:
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="500"/>
+  <img src="images/05 Games with Sequential Actions/A - Perfect-information extensive-form games_cell6_img1.svg" alt="Backward induction" width="500"/>
 </p>
 <p align="center"><em>Backward induction solving a game tree (green annotations show calculated values).</em></p>
 
@@ -263,7 +263,7 @@ Games where every player knows the complete history (like chess). The game is a 
 In many games, players don't observe all previous moves (like poker). Information sets group nodes a player can't distinguish (shown as dashed blue lines):
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/B - Imperfect-information extensive-form games_cell3_img1.svg" alt="Information set example" width="500"/>
+  <img src="images/05 Games with Sequential Actions/B - Imperfect-information extensive-form games_cell3_img1.svg" alt="Information set example" width="500"/>
 </p>
 <p align="center"><em>Game with information sets representing imperfect information.</em></p>
 
@@ -276,20 +276,20 @@ A key concept is behavioral strategies: instead of mixing over complete strategi
 The sequence form provides efficient computation for imperfect-information games with perfect recall. A sequence is the set of actions a player takes to reach a node. A realization plan assigns probabilities to sequences such that probabilities sum correctly up the tree. Computing best responses becomes a linear program (or its dual), dramatically more efficient than enumerating all behavioral strategies:
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell3_img1.svg" alt="Sequence form game" width="450"/>
+  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell3_img1.svg" alt="Sequence form game" width="450"/>
 </p>
 <p align="center"><em>Game solved using the sequence form representation.</em></p>
 
 This notebook also covers sequential equilibria, which extend subgame-perfect equilibrium to imperfect-information games. The key challenge: when information sets group nodes together, players must form beliefs about which node they're at. Sequential equilibrium requires strategies to be optimal given these beliefs:
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell10_img1.svg" alt="Sequential equilibrium example" width="380"/>
-  <img src="../images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell12_img1.svg" alt="Subgame values" width="380"/>
+  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell10_img1.svg" alt="Sequential equilibrium example" width="380"/>
+  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell12_img1.svg" alt="Subgame values" width="380"/>
 </p>
 
 <p align="center">
-  <img src="../images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell14_img1.svg" alt="Imperfect information variant" width="380"/>
-  <img src="../images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell18_img1.svg" alt="Belief probabilities" width="380"/>
+  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell14_img1.svg" alt="Imperfect information variant" width="380"/>
+  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell18_img1.svg" alt="Belief probabilities" width="380"/>
 </p>
 <p align="center"><em>Sequential equilibrium: subgame-perfect equilibrium extended to imperfect information using belief probabilities.</em></p>
 
@@ -309,7 +309,7 @@ Many real-world interactions don't fit one-shot normal-form games or finite exte
 When agents interact repeatedly, cooperation can be sustained through future punishment threats. The folk theorem says any outcome better than minimax can be sustained as equilibrium. The notebook explores bounded rationality using finite automata to represent strategies, constraining computational complexity:
 
 <p align="center">
-  <img src="../images/06 Richer Representations - Beyond the Normal and Extensive Forms/A - Repeated games_cell3_img1.svg" alt="Tit-for-Tat automaton" width="400"/>
+  <img src="images/06 Richer Representations - Beyond the Normal and Extensive Forms/A - Repeated games_cell3_img1.svg" alt="Tit-for-Tat automaton" width="400"/>
 </p>
 <p align="center"><em>Classic Tit-for-Tat strategy as a finite automaton.</em></p>
 
@@ -328,7 +328,7 @@ A stochastic game combines game theory with MDPs - multiple states with transiti
 Players have private information ("types"). For example, in auctions each bidder knows their own valuation but not others'. Three equivalent representations: information sets, extensive form with Nature making initial random choices, and epistemic types with a common prior. Expected utility can be computed ex post (knowing all types), ex interim (knowing your own type), or ex ante (knowing nothing). Mechanism design uses Bayesian games extensively.
 
 <p align="center">
-  <img src="../images/06 Richer Representations - Beyond the Normal and Extensive Forms/C - Bayesian games_cell3_img1.svg" alt="Bayesian game extensive form" width="600"/>
+  <img src="images/06 Richer Representations - Beyond the Normal and Extensive Forms/C - Bayesian games_cell3_img1.svg" alt="Bayesian game extensive form" width="600"/>
 </p>
 <p align="center"><em>Extensive form representation with Nature node choosing between four games (Matching Pennies, Prisoner's Dilemma, Coordination, Battle of Sexes). Information sets show what each player knows about the game being played.</em></p>
 
@@ -345,7 +345,7 @@ Model shared resources like traffic or network routing where costs depend on how
 For many players, full payoff matrices are intractable. This notebook covers polynomial-type games and efficient expected utility computation. Graphical games represent payoff dependencies as a graph where agents only depend on neighbors. Action-graph games compress actions rather than players. Multi-agent influence diagrams (MAIDs) combine graphical games with extensive forms. These representations enable polynomial-time algorithms for equilibria and expected utility when dependencies are sparse.
 
 <p align="center">
-  <img src="../images/06 Richer Representations - Beyond the Normal and Extensive Forms/E - Computationally motivated compact representations_cell7_img1.svg" alt="MAID example" width="500"/>
+  <img src="images/06 Richer Representations - Beyond the Normal and Extensive Forms/E - Computationally motivated compact representations_cell7_img1.svg" alt="MAID example" width="500"/>
 </p>
 <p align="center"><em>Multi-agent influence diagram showing two players (grey shades) deciding about a tree and patio. Rectangles are decisions, ovals are random events, diamonds are utilities. Dotted arrows indicate information flow; solid arrows indicate causal effects. The light grey player sees if the tree is sick and calls a doctor; the dark grey player poisons the tree and decides whether to build a patio.</em></p>
 
@@ -406,7 +406,7 @@ So far we've assumed agents observe actions but don't communicate directly. This
 Does communication before the game change things? For Prisoner's Dilemma: well, no. Regardless of what both players say, they will each still choose to defect. Cheap talk is communication that's costless and non-binding.
 
 <p align="center">
-  <img src="../images/08 Communication/A - Doing by talking I (cheap talk)_cell3_img1.svg" alt="Cheap talk game" width="500"/>
+  <img src="images/08 Communication/A - Doing by talking I (cheap talk)_cell3_img1.svg" alt="Cheap talk game" width="500"/>
 </p>
 <p align="center"><em>Game tree with pre-play cheap talk communication stage.</em></p>
 
@@ -419,14 +419,14 @@ In games with multiple equilibria (Battle of the Sexes), cheap talk can help coo
 Signalling games model asymmetric information: Nature chooses a game type, Player 1 observes it and takes an action, Player 2 observes only the action (not the game type) and responds. Player 1's action serves as a signal about the hidden information. Unlike cheap talk, signals can be credible because they're costly or constrained.
 
 <p align="center">
-  <img src="../images/08 Communication/B - Talking by doing (signalling games)_cell3_img1.svg" alt="PD/Stag signaling game" width="600"/>
+  <img src="images/08 Communication/B - Talking by doing (signalling games)_cell3_img1.svg" alt="PD/Stag signaling game" width="600"/>
 </p>
 <p align="center"><em>Nature chooses between Prisoner's Dilemma and Stag Hunt. Player 1 sees the game and chooses C or D. Player 2 observes only Player 1's action (shown by information sets) and must respond without knowing which game is being played.</em></p>
 
 The challenge: Player 1's optimal action depends on what Player 2 will do, but Player 2's optimal response depends on inferring which game is being played from Player 1's action. Simple Bayesian reasoning fails because Player 1 anticipates Player 2's inference.
 
 <p align="center">
-  <img src="../images/08 Communication/B - Talking by doing (signalling games)_cell5_img1.svg" alt="Zero-sum signaling game" width="600"/>
+  <img src="images/08 Communication/B - Talking by doing (signalling games)_cell5_img1.svg" alt="Zero-sum signaling game" width="600"/>
 </p>
 <p align="center"><em>Two zero-sum games where Player 1 can signal the game type through action choice. If Player 1 always plays B, they average 2.5 regardless of Player 2's response, better than playing each game's Nash equilibrium (which would average 1.5).</em></p>
 
@@ -439,7 +439,7 @@ Separating equilibria reveal information (different actions signal different typ
 Speech-act theory distinguishes three aspects of speech: locutionary (literal content), illocutionary (speaker intention), and perlocutionary (effect on listener). Grice's cooperative principles govern conversation: Quantity (provide needed information), Quality (be truthful), Relation (be relevant), and Manner (be clear). These principles explain implicature - how "Harry hasn't gone to prison yet" conveys more than its literal meaning.
 
 <p align="center">
-  <img src="../images/08 Communication/C- Doing by talking II (speech-act theory)_cell3_img1.svg" alt="Chair ambiguity game" width="600"/>
+  <img src="images/08 Communication/C- Doing by talking II (speech-act theory)_cell3_img1.svg" alt="Chair ambiguity game" width="600"/>
 </p>
 <p align="center"><em>Signaling game modeling ambiguous language. Nature determines whether a wooden chair or the meeting chair is coming. The speaker chooses clarity level (costly to be more specific). The listener infers meaning from ambiguous statements. Optimal strategy: be clear for the less likely event, use shorthand for the more likely one.</em></p>
 
@@ -490,7 +490,7 @@ Escaping impossibility: Restrict preference domains, use money/transfers (VCG me
 Vickrey auction: Second-price sealed-bid where highest bidder pays second-highest bid. Truthful bidding is dominant!
 
 <p align="center">
-  <img src="../images/10 Protocols for Strategic Agents - Mechanism Design/A - Mechanism design with unrestricted preferences_cell3_img1.svg" alt="Mechanism design example" width="500"/>
+  <img src="images/10 Protocols for Strategic Agents - Mechanism Design/A - Mechanism design with unrestricted preferences_cell3_img1.svg" alt="Mechanism design example" width="500"/>
 </p>
 <p align="center"><em>Visual representation of mechanism design concepts.</em></p>
 
