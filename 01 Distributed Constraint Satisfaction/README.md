@@ -29,7 +29,7 @@ This notebook introduces domain pruning, where each node eliminates values from 
 
 This works and can also sometimes identify when a problem has no solution, but not always. Also it can get stuck if there are multiple solutions.
 
-Later this notebook introduces the **hyper-resolution algorithm**, which expands on the idea using a more general unit-resolution rule from propositional logic. Nodes generate new constraints at each step called "nogoods" and communicate those to their neighbours.
+Later this notebook introduces the hyper-resolution algorithm, which expands on the idea using a more general unit-resolution rule from propositional logic. Nodes generate new constraints at each step called "nogoods" and communicate those to their neighbours.
 
 ---
 

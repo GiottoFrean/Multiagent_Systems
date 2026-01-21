@@ -6,7 +6,7 @@ It is often difficult to measure true utilities. One alternative is to ask about
 
 ## A - Models and Voting, Social Functions, Ranking Systems
 
-A social choice function maps individual preferences to a collective outcome. Condorcet winner: beats every other candidate in pairwise votes - but doesn't always exist! You can have cycles.
+A social choice function maps individual preferences to a collective outcome. Condorcet winner: beats every other candidate in pairwise votes, but doesn't always exist! You can have cycles.
 
 Common voting systems: Plurality (spoiler effects), Borda count (manipulable), instant runoff (non-monotonic), approval voting (loses ranking info), range/quadratic voting.
 

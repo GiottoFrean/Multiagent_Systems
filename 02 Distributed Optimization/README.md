@@ -41,7 +41,7 @@ When multiple agents coordinate in an MDP, the state space becomes huge. This no
 <p align="center">
   <img src="../images/02 Distributed Optimization/C - Action selection in multiagent MDPs_cell3_img1.png" alt="Multiagent coordination" width="700"/>
 </p>
-<p align="center"><em>Agents coordinating positions through variable elimination.</em></p>
+<p align="center"><em>Agents coordinating positions with variable elimination.</em></p>
 
 ---
 
@@ -53,7 +53,7 @@ A review of linear programming and the simplex algorithm. Visualizes 2D and 3D e
 
 ## E - Duality in Linear Programming
 
-Every linear program has a dual formulation. The fundamental theorem: if both have optimal solutions, their values are equal. This has deep implications for game theory and economics.
+Every linear program has a dual formulation. The fundamental theorem: if both have optimal solutions, their values are equal. 
 
 ---
 

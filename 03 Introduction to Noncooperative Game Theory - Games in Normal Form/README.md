@@ -17,7 +17,7 @@ A normal-form game consists of players, actions, and payoff functions. Games are
 The notebook introduces classic games like Prisoner's Dilemma: If both cooperate they get 5 each. If one cooperates and one defects, one gets 8 and the other gets 0. If both defect they get 2. The best option is (C,C) but the outcome is (D,D).
 
 <p align="center">
-  <img src="../images/03 Introduction to Noncooperative Game Theory - Games in Normal Form/B - Games in normal form_cell3_img2.png" alt="Mixed strategy heatmap" width="500"/>
+  <img src="../images/03 Introduction to Noncooperative Game Theory - Games in Normal Form/B - Games in normal form_cell3_img2.png" alt="Mixed strategy heatmap" width="700"/>
 </p>
 <p align="center"><em>Heatmap showing utilities for different mixed strategy combinations.</em></p>
 
