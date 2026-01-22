@@ -12,15 +12,15 @@ Dijkstra's algorithm builds paths outward from the origin by always selecting th
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
 </p>
 
-node s found a new shortest path to a with length 1
+node s found a new shortest path to a with length 1 <br>
 node s found a new shortest path to b with length 3
 
 <p align="center">
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
 </p>
 
-node a found a new shortest path to b with length 2
-node a found a new shortest path to c with length 3
+node a found a new shortest path to b with length 2 <br>
+node a found a new shortest path to c with length 3 <br>
 node b found a new shortest path to d with length 4
 
 <p align="center">
