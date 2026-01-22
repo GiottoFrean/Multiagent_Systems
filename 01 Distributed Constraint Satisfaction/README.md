@@ -35,7 +35,7 @@ X2 removes blue...
 
 This works eventually, but it can get stuck if there are multiple solutions and won't always identify if a problem has no solution.
 
-This notebook also introduces the **hyper-resolution algorithm**, which uses a general rule from propositional logic. It works by having nodes generate new constraints at each step, called "nogoods", and communicate those to their neighbours.
+This notebook also introduces the hyper-resolution algorithm, which uses a general rule from propositional logic. It works by having nodes generate new constraints at each step, called "nogoods", and communicate those to their neighbours.
 
 ---
 

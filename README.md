@@ -1,6 +1,6 @@
 # Multiagent Systems
 
-This repository contains my notes and explorations while learning from the book **Multiagent Systems** by Yoav Shoham and Kevin Leyton-Brown. Each folder corresponds to a chapter or topic from the book, with Jupyter notebooks working through the concepts, algorithms, and examples.
+This repository contains my notes and explorations while learning from the book Multiagent Systems by Yoav Shoham and Kevin Leyton-Brown. Each folder corresponds to a chapter or topic from the book, with Jupyter notebooks working through the concepts, algorithms, and examples.
 
 ---
 
@@ -42,7 +42,7 @@ X2 removes blue...
 
 This works eventually, but it can get stuck if there are multiple solutions and won't always identify if a problem has no solution.
 
-This notebook also introduces the **hyper-resolution algorithm**, which uses a general rule from propositional logic. It works by having nodes generate new constraints at each step, called "nogoods", and communicate those to their neighbours.
+This notebook also introduces the hyper-resolution algorithm, which uses a general rule from propositional logic. It works by having nodes generate new constraints at each step, called "nogoods", and communicate those to their neighbours.
 
 ---
 
@@ -101,15 +101,15 @@ Dijkstra's algorithm builds paths outward from the origin by always selecting th
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
 </p>
 
-node s found a new shortest path to a with length 1
+node s found a new shortest path to a with length 1 <br>
 node s found a new shortest path to b with length 3
 
 <p align="center">
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
 </p>
 
-node a found a new shortest path to b with length 2
-node a found a new shortest path to c with length 3
+node a found a new shortest path to b with length 2 <br>
+node a found a new shortest path to c with length 3 <br>
 node b found a new shortest path to d with length 4
 
 <p align="center">
