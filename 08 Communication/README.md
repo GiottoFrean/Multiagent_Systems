@@ -2,8 +2,6 @@
 
 So far we've assumed agents observe actions but don't communicate directly. This section explores when and how communication matters in strategic settings.
 
-The notebooks roughly split communication into *informational* views (messages update beliefs) and *motivational/strategic* views (messages/actions are chosen to influence others).
-
 ---
 
 ## A - Doing by Talking I (Cheap Talk)
@@ -15,7 +13,7 @@ Does communication before the game change things? For Prisoner's Dilemma: well, 
 </p>
 <p align="center"><em>Game tree with pre-play cheap talk communication stage.</em></p>
 
-In games with multiple equilibria (Battle of the Sexes), cheap talk can help coordinate. You can see that doing the opposite of what was said is an equilibrium too... How confusing! Giotto's thought: communication is probably only applicable in repeated games.
+In games with multiple equilibria (Battle of the Sexes), cheap talk can help coordinate. You can see that doing the opposite of what was said is an equilibrium too... How confusing!
 
 ---
 
@@ -35,8 +33,6 @@ The challenge: Player 1's optimal action depends on what Player 2 will do, but P
 </p>
 <p align="center"><em>Two zero-sum games where Player 1 can signal the game type through action choice. If Player 1 always plays B, they average 2.5 regardless of Player 2's response, better than playing each game's Nash equilibrium (which would average 1.5).</em></p>
 
-Separating equilibria reveal information (different actions signal different types), while pooling equilibria hide it (same action regardless of type). Classic examples: education signaling ability (Spence), warranties signaling quality, peacock tails signaling fitness.
-
 ---
 
 ## C - Doing by Talking II (Speech-Act Theory)
@@ -48,6 +44,4 @@ Speech-act theory distinguishes three aspects of speech: locutionary (literal co
 </p>
 <p align="center"><em>Signaling game modeling ambiguous language. Nature determines whether a wooden chair or the meeting chair is coming. The speaker chooses clarity level (costly to be more specific). The listener infers meaning from ambiguous statements. Optimal strategy: be clear for the less likely event, use shorthand for the more likely one.</em></p>
 
-Game-theoretic view: Model conversation as a signaling game where speakers trade off clarity costs against listener comprehension. When the wooden chair is rare, speakers say "the wooden chair..." but shorten to "the chair..." for the common case (meeting chair), with listeners inferring accordingly. The equilibrium minimizes expected communication cost while avoiding costly misunderstandings.
-
-Applications: TRAINS/TRIPS dialog systems, workflow systems with speech acts (report/acknowledge), agent communication languages (XML-based), and rational programming languages where code can make commitments (Agent0, Elephant2000).
+Tied up with the value of information.

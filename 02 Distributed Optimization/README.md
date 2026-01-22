@@ -1,20 +1,35 @@
 # Distributed Optimization
 
-Distributed Optimization is about how agents with different information can optimise a global objective function.
+Distributed Optimization is about how agents with different sets of information can optimise a global objective function.
 
 ---
 
 ## A - Distributed Dynamic Programming
 
-This notebook explores distributed approaches to the shortest path problem. While Dijkstra's algorithm builds paths outward by always selecting the node with the shortest distance, asynchronous dynamic programming allows nodes to update their distance estimates in any order and still converge to the optimal solution. 
+Dijkstra's algorithm builds paths outward from the origin by always selecting the node with the shortest distance. The asynchronous dynamic programming instead has nodes updating their distance estimates in any order. It still converge to the optimal solution. 
 
 <p align="center">
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
+</p>
+
+node s found a new shortest path to a with length 1
+node s found a new shortest path to b with length 3
+
+<p align="center">
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
 </p>
 
+node a found a new shortest path to b with length 2
+node a found a new shortest path to c with length 3
+node b found a new shortest path to d with length 4
+
 <p align="center">
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img9.png" alt="DP iteration 5" width="700"/>
+</p>
+
+node c found a new shortest path to t with length 4
+
+<p align="center">
   <img src="../images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img13.png" alt="DP iteration 7" width="700"/>
 </p>
 <p align="center"><em>Asynchronous dynamic programming progressively finding shortest paths.</em></p>
@@ -28,9 +43,9 @@ The notebook also covers Learning Real-Time A* (LRTA*), where multiple agents ex
 This notebook reviews Markov Decision Processes (MDPs), which extend path-finding to stochastic environments. The Bellman equation provides the optimal value function and is proven to be a contraction mapping. A go-kart racing example demonstrates the concepts:
 
 <p align="center">
-  <img src="../images/02 Distributed Optimization/B - Review MDPs_cell7_img1.png" alt="Go-kart MDP" width="500"/>
+  <img src="../images/02 Distributed Optimization/B - Review MDPs_cell11_img1.png" alt="Go-kart MDP" width="500"/>
 </p>
-<p align="center"><em>Go-kart racing MDP with two lanes and stochastic transitions.</em></p>
+<p align="center"><em>Go-kart racing MDP policy with two lanes and stochastic transitions.</em></p>
 
 ---
 
@@ -41,7 +56,7 @@ When multiple agents coordinate in an MDP, the state space becomes huge. This no
 <p align="center">
   <img src="../images/02 Distributed Optimization/C - Action selection in multiagent MDPs_cell3_img1.png" alt="Multiagent coordination" width="700"/>
 </p>
-<p align="center"><em>Agents coordinating positions with variable elimination.</em></p>
+<p align="center"><em>Agents coordinating positions, variable elimination makes this fast to compute.</em></p>
 
 ---
 
@@ -71,4 +86,4 @@ This notebook extends the assignment problem to scheduling, where agents need ti
 
 ## H - Social Laws, the Traffic Problem
 
-This notebook explores social laws: rules that constrain agent behavior to improve global outcomes without requiring continuous coordination. The classic example is traffic conventions where everyone drives on the same side of the road. A more complex example involves robots navigating a graph where collisions must be avoided: by assigning each robot a specific speed (1/k where k is the number of robots) or by cleverly labeling nodes, conflicts can be completely eliminated through simple local rules rather than complex centralized planning.
+This notebook explores social laws: rules that constrain agent behavior to improve global outcomes without requiring continuous coordination. 

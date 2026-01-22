@@ -10,7 +10,7 @@ This notebook starts with the easy case: two-player, zero-sum games, where compu
 
 It then moves to general two-player games, where equilibrium computation is harder. The notebook introduces an LCP (linear complementarity problem) formulation and the Lemke-Howson algorithm as a pivoting method for finding equilibria.
 
-One of the key geometric ideas is the “labelling” view: at equilibrium, each mixed strategy is labelled by its zero-probability actions and the opponent’s best-response actions, and an equilibrium occurs where the combined labels cover all actions.
+One of the key geometric ideas is the “labelling” view. At equilibrium, each mixed strategy is labelled by its zero-probability actions and the opponent’s best-response actions, which means equilibrium occurs where the combined labels cover all actions. This leads to a path-following algorithm that traces edges of the best-response polytopes to find equilibria.
 
 The notebook visualizes this labelling process:
 
@@ -25,25 +25,23 @@ The notebook visualizes this labelling process:
 </p>
 <p align="center"><em>Lemke-Howson algorithm: utility curves show best responses, labelling diagrams identify equilibrium points where all actions are covered.</em></p>
 
-The algorithm successfully finds all three equilibria in the example game (two pure strategy equilibria plus one mixed).
-
 ---
 
 ## B - Computing Nash Equilibria, Deeper Look
 
-This does a deeper dive into the Lemke-Howson algorithm.
+This does a deeper dive into the Lemke-Howson algorithm. Explanations of pivoting too. 
 
 ---
 
 ## C - Computing Nash Equilibria as an Optimisation Problem
 
-Can we formulate equilibrium-finding as optimization? This notebook explores gradient-based methods.
+This notebook explores gradient-based method,s where equilibrium-finding is formulated as optimization.
 
 ---
 
 ## D - Identifying Dominated Strategies, Iterative Dominance
 
-One way to make the computation easier is to iteratively remove dominated strategies until no more exist, this notebook looks at domination by pure and mixed strategies.
+One way to make the computation easier is to iteratively remove dominated strategies until no more exist, this notebook looks at domination by pure and mixed strategies in detail.
 
 ---
 

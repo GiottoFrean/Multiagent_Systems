@@ -47,4 +47,4 @@ For many players, full payoff matrices are intractable. This notebook covers pol
 <p align="center">
   <img src="../images/06 Richer Representations - Beyond the Normal and Extensive Forms/E - Computationally motivated compact representations_cell7_img1.svg" alt="MAID example" width="500"/>
 </p>
-<p align="center"><em>Multi-agent influence diagram showing two players (grey shades) deciding about a tree and patio. Rectangles are decisions, ovals are random events, diamonds are utilities. Dotted arrows indicate information flow; solid arrows indicate causal effects. The light grey player sees if the tree is sick and calls a doctor; the dark grey player poisons the tree and decides whether to build a patio.</em></p>
+<p align="center"><em>Multi-agent influence diagram showing two players (grey shades) deciding about a tree and patio. Rectangles are decisions, ovals are random events, diamonds are utilities. Dotted arrows indicate information flow; solid arrows indicate causal effects. </em></p>

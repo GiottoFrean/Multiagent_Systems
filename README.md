@@ -9,7 +9,7 @@ This repository contains my notes and explorations while learning from the book 
 
 Distributed constraint satisfaction addresses how agents with independent constraints can collectively reach a solution that satisfies all requirements.
 
-Imagine a network of cell towers, where each tower needs to use a different frequency to those nearby. You can think of this as a graph coloring problem, where the frequencies are the colors.
+Imagine a network of cell towers, where each tower needs to use a different frequency to those nearby. This is basically a graph coloring problem, where the frequencies are the colors.
 
 ---
 
@@ -21,36 +21,49 @@ This notebook introduces domain pruning, where each node eliminates values from 
   <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img1.png" alt="Filtering steps 1" width="320"/>
 </p>
 
+X3 removes red...
+
 <p align="center">
   <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img3.png" alt="Filtering steps 2" width="320"/>
 </p>
 
+X2 removes red...
+
 <p align="center">
   <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img5.png" alt="Filtering steps 3" width="320"/>
 </p>
+
+X2 removes blue...
 
 <p align="center">
   <img src="images/01 Distributed Constraint Satisfaction/A - Domain-pruning algorithms_cell10_img7.png" alt="Filtering steps 4" width="320"/>
 </p>
 <p align="center"><em>Filtering algorithm progressively reducing domains until a solution is found.</em></p>
 
-This works and can also sometimes identify when a problem has no solution, but not always. Also it can get stuck if there are multiple solutions.
+This works eventually, but it can get stuck if there are multiple solutions and won't always identify if a problem has no solution.
 
-Later this notebook introduces the hyper-resolution algorithm, which expands on the idea using a more general unit-resolution rule from propositional logic. Nodes generate new constraints at each step called "nogoods" and communicate those to their neighbours.
+This notebook also introduces the **hyper-resolution algorithm**, which uses a general rule from propositional logic. It works by having nodes generate new constraints at each step, called "nogoods", and communicate those to their neighbours.
 
 ---
 
 ### B - Introduction to Heuristic Search Algorithms
 
-Domain pruning is expensive, so this notebook looks at some heuristic alternatives. 
+While simple domain pruning is also expensive, so heuristic alternatives are often used. 
 
-One *centralised* option is to do a recursive search of values, backtracking when you find one that can't work. We can take that idea and try to make it work in a decentalised way by having each node simply choose a value that works with it's neighbours, but this isn't guaranteed to find when there isn't a solution.
+One *centralised* strategy for solving a constraint problem is to do recursive search of values, backtracking when you find one that doesn't work. We can take that idea and try to make it work in a decentalised way by having each node simply choose a value that works with it's current neighbours.
+
+While easy to explain, it unfortunately sometimes fails to find a solution even when there is one. e.g.,
+
+<p align="center">
+  <img src="images/01 Distributed Constraint Satisfaction/B - Introduction to heuristic search algorithms_cell15_img1.png" alt="Fails in this case" width="320"/>
+</p>
+<p align="center"><em>The algorithm fails in this case.</em></p>
 
 ---
 
 ### C - The Asynchronous Backtracking Algorithm
 
-The asynchonous backtracking algorithm can be thought of as a greedy version of the hyper-resolution algorithm, meeting somewhere between the two previous ideas. Essentially, we want every node to be trying to find a value, and then backtracking by sending a 'nogood' when it can't.
+The asynchonous backtracking algorithm can be thought of as a greedy version of the hyper-resolution algorithm, meeting somewhere between the two previous ideas. Essentially, we want every node to be trying values, and then backtracking with a 'nogood' when it can't.
 
 <p align="center">
   <img src="images/01 Distributed Constraint Satisfaction/C - The asynchronous backtracking algorithm_cell9_img1.png" alt="ABT step 1" width="700"/>
@@ -76,21 +89,36 @@ The asynchonous backtracking algorithm can be thought of as a greedy version of 
 
 ## 02 Distributed Optimization
 
-Distributed Optimization is about how agents with different information can optimise a global objective function.
+Distributed Optimization is about how agents with different sets of information can optimise a global objective function.
 
 ---
 
 ### A - Distributed Dynamic Programming
 
-This notebook explores distributed approaches to the shortest path problem. While Dijkstra's algorithm builds paths outward by always selecting the node with the shortest distance, asynchronous dynamic programming allows nodes to update their distance estimates in any order and still converge to the optimal solution. 
+Dijkstra's algorithm builds paths outward from the origin by always selecting the node with the shortest distance. The asynchronous dynamic programming instead has nodes updating their distance estimates in any order. It still converge to the optimal solution. 
 
 <p align="center">
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img1.png" alt="DP iteration 1" width="700"/>
+</p>
+
+node s found a new shortest path to a with length 1
+node s found a new shortest path to b with length 3
+
+<p align="center">
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img5.png" alt="DP iteration 3" width="700"/>
 </p>
 
+node a found a new shortest path to b with length 2
+node a found a new shortest path to c with length 3
+node b found a new shortest path to d with length 4
+
 <p align="center">
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img9.png" alt="DP iteration 5" width="700"/>
+</p>
+
+node c found a new shortest path to t with length 4
+
+<p align="center">
   <img src="images/02 Distributed Optimization/A - Distributed dynamic programming_cell6_img13.png" alt="DP iteration 7" width="700"/>
 </p>
 <p align="center"><em>Asynchronous dynamic programming progressively finding shortest paths.</em></p>
@@ -104,9 +132,9 @@ The notebook also covers Learning Real-Time A* (LRTA*), where multiple agents ex
 This notebook reviews Markov Decision Processes (MDPs), which extend path-finding to stochastic environments. The Bellman equation provides the optimal value function and is proven to be a contraction mapping. A go-kart racing example demonstrates the concepts:
 
 <p align="center">
-  <img src="images/02 Distributed Optimization/B - Review MDPs_cell7_img1.png" alt="Go-kart MDP" width="500"/>
+  <img src="images/02 Distributed Optimization/B - Review MDPs_cell11_img1.png" alt="Go-kart MDP" width="500"/>
 </p>
-<p align="center"><em>Go-kart racing MDP with two lanes and stochastic transitions.</em></p>
+<p align="center"><em>Go-kart racing MDP policy with two lanes and stochastic transitions.</em></p>
 
 ---
 
@@ -117,7 +145,7 @@ When multiple agents coordinate in an MDP, the state space becomes huge. This no
 <p align="center">
   <img src="images/02 Distributed Optimization/C - Action selection in multiagent MDPs_cell3_img1.png" alt="Multiagent coordination" width="700"/>
 </p>
-<p align="center"><em>Agents coordinating positions with variable elimination.</em></p>
+<p align="center"><em>Agents coordinating positions, variable elimination makes this fast to compute.</em></p>
 
 ---
 
@@ -147,12 +175,12 @@ This notebook extends the assignment problem to scheduling, where agents need ti
 
 ### H - Social Laws, the Traffic Problem
 
-This notebook explores social laws: rules that constrain agent behavior to improve global outcomes without requiring continuous coordination. The classic example is traffic conventions where everyone drives on the same side of the road. A more complex example involves robots navigating a graph where collisions must be avoided: by assigning each robot a specific speed (1/k where k is the number of robots) or by cleverly labeling nodes, conflicts can be completely eliminated through simple local rules rather than complex centralized planning.
+This notebook explores social laws: rules that constrain agent behavior to improve global outcomes without requiring continuous coordination.
 
 
 ## 03 Introduction to Noncooperative Game Theory - Games in Normal Form
 
-When we talk about self-interested agents we are talking about individuals with a capability to engage in different actions which can effect the world, and who have preferences about what the world looks like. Unlike the previous chapters where agents cooperate, here agents have their own preferences and may have conflicting goals.
+Here self-interested agents who have their own preferences are introduced.
 
 ---
 
@@ -164,9 +192,9 @@ This notebook establishes the mathematical framework of utility theory. The Von 
 
 ### B - Games in Normal Form
 
-A normal-form game consists of players, actions, and payoff functions. Games are represented as matrices with utilities for each player.
+A normal-form game consists of players, actions, and payoff functions. Games are represented as matrices with utilities for each player based on action profiles. Pure strategies are introduced as well as mixed strategies, where players randomize over actions.
 
-The notebook introduces classic games like Prisoner's Dilemma: If both cooperate they get 5 each. If one cooperates and one defects, one gets 8 and the other gets 0. If both defect they get 2. The best option is (C,C) but the outcome is (D,D).
+The notebook introduces classic games like Prisoner's Dilemma: If both cooperate they get 5 each. If one cooperates and one defects, one gets 8 and the other gets 0. If both defect they get 2. The best option is (C,C) but the outcome is (D,D). Notice below that regardless of what player 2 does, player 1 is better off defecting (and vice versa).
 
 <p align="center">
   <img src="images/03 Introduction to Noncooperative Game Theory - Games in Normal Form/B - Games in normal form_cell3_img2.png" alt="Mixed strategy heatmap" width="700"/>
@@ -177,13 +205,13 @@ The notebook introduces classic games like Prisoner's Dilemma: If both cooperate
 
 ### C - Analyzing Games, Optimality and Equilibrium
 
-Nash equilibrium: A strategy profile where no player can improve by unilaterally changing their strategy. The notebook proves every finite game has at least one Nash equilibrium (possibly in mixed strategies). For Prisoner's Dilemma, (D,D) is the unique Nash equilibrium, even though it's not Pareto optimal.
+Talks about Nash equilibrium, which is where no player can improve by unilaterally changing their strategy. For Prisoner's Dilemma, (D,D) is the unique Nash equilibrium, even though it's not optimal.
 
 ---
 
 ### D - Further Solution Concepts for Normal-Form Games
 
-This notebook explores refinements: minimax strategies for zero-sum games, correlated equilibrium where a trusted third party recommends actions, and iterated elimination of dominated strategies where actions that are always worse can be removed.
+This notebook explores refinements. Minimax strategies for zero-sum games, where each player minimizes the maximum possible loss. Correlated equilibrium, where a trusted third party recommends actions. Also discusses dominated strategies and iterated elimination of dominated strategies.
 
 
 ## 04 Computing solution concepts for Normal-Form games
@@ -198,7 +226,7 @@ This notebook starts with the easy case: two-player, zero-sum games, where compu
 
 It then moves to general two-player games, where equilibrium computation is harder. The notebook introduces an LCP (linear complementarity problem) formulation and the Lemke-Howson algorithm as a pivoting method for finding equilibria.
 
-One of the key geometric ideas is the “labelling” view: at equilibrium, each mixed strategy is labelled by its zero-probability actions and the opponent’s best-response actions, and an equilibrium occurs where the combined labels cover all actions.
+One of the key geometric ideas is the “labelling” view. At equilibrium, each mixed strategy is labelled by its zero-probability actions and the opponent’s best-response actions, which means equilibrium occurs where the combined labels cover all actions. This leads to a path-following algorithm that traces edges of the best-response polytopes to find equilibria.
 
 The notebook visualizes this labelling process:
 
@@ -213,25 +241,23 @@ The notebook visualizes this labelling process:
 </p>
 <p align="center"><em>Lemke-Howson algorithm: utility curves show best responses, labelling diagrams identify equilibrium points where all actions are covered.</em></p>
 
-The algorithm successfully finds all three equilibria in the example game (two pure strategy equilibria plus one mixed).
-
 ---
 
 ### B - Computing Nash Equilibria, Deeper Look
 
-This does a deeper dive into the Lemke-Howson algorithm.
+This does a deeper dive into the Lemke-Howson algorithm. Explanations of pivoting too. 
 
 ---
 
 ### C - Computing Nash Equilibria as an Optimisation Problem
 
-Can we formulate equilibrium-finding as optimization? This notebook explores gradient-based methods.
+This notebook explores gradient-based method,s where equilibrium-finding is formulated as optimization.
 
 ---
 
 ### D - Identifying Dominated Strategies, Iterative Dominance
 
-One way to make the computation easier is to iteratively remove dominated strategies until no more exist, this notebook looks at domination by pure and mixed strategies.
+One way to make the computation easier is to iteratively remove dominated strategies until no more exist, this notebook looks at domination by pure and mixed strategies in detail.
 
 ---
 
@@ -266,33 +292,33 @@ In many games, players don't observe all previous moves (like poker). Informatio
 </p>
 <p align="center"><em>Game with information sets representing imperfect information.</em></p>
 
-A key concept is behavioral strategies: instead of mixing over complete strategies (as in normal-form), players randomize independently at each information set. For games with perfect recall (where players remember their own past actions), behavioral strategies are equivalent in expressive power to mixed strategies. Without perfect recall, some mixed strategies cannot be represented as behavioral strategies.
+A key concept is behavioral strategies: instead of mixing over complete strategies (as in normal-form), players randomize independently at each information set. For games with perfect recall (where players remember their own past actions), behavioral strategies are equivalent in expressive power to mixed strategies. Without perfect recall, some mixed strategies cannot be represented as behavioral strategies and vice versa.
 
 ---
 
 ### C - Computing Equilibria with the Sequence Form
 
-The sequence form provides efficient computation for imperfect-information games with perfect recall. A sequence is the set of actions a player takes to reach a node. A realization plan assigns probabilities to sequences such that probabilities sum correctly up the tree. Computing best responses becomes a linear program (or its dual), dramatically more efficient than enumerating all behavioral strategies:
-
-<p align="center">
-  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell3_img1.svg" alt="Sequence form game" width="450"/>
-</p>
-<p align="center"><em>Game solved using the sequence form representation.</em></p>
+The sequence form provides efficient computation for imperfect-information games with perfect recall. A sequence is the set of actions a player takes to reach a node. A realization plan assigns probabilities to sequences such that probabilities sum correctly up the tree. Computing best responses becomes a linear program (or its dual), dramatically more efficient than enumerating all behavioral strategies.
 
 This notebook also covers sequential equilibria, which extend subgame-perfect equilibrium to imperfect-information games. The key challenge: when information sets group nodes together, players must form beliefs about which node they're at. Sequential equilibrium requires strategies to be optimal given these beliefs:
 
 <p align="center">
   <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell10_img1.svg" alt="Sequential equilibrium example" width="380"/>
+</p>
+
+There are two Nash equilibria: LU and RD. But it's a bit odd! In truth player 1 would realise if they do R then player 2 will go D, which is better for player 1 than LU. The only true equilibria is then RD. We can see this if we compute the subgames. In this case the subgames are trivial as each player just makes the best decision they can:
+
+<p align="center">
   <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell12_img1.svg" alt="Subgame values" width="380"/>
 </p>
 
+When it comes to imperfect-information games this concept is extended into "sequential equilibria" and gets a bit more complicated. Let's assume that the second player doesn't know what the first did. Then we get something more like this:
+
 <p align="center">
   <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell14_img1.svg" alt="Imperfect information variant" width="380"/>
-  <img src="images/05 Games with Sequential Actions/C - computing equilibria with the sequence form_cell18_img1.svg" alt="Belief probabilities" width="380"/>
 </p>
-<p align="center"><em>Sequential equilibrium: subgame-perfect equilibrium extended to imperfect information using belief probabilities.</em></p>
 
-The sequence form is the foundation for modern poker-solving algorithms.
+We can no longer just push back the values, because what player 2 will do is dependent on what player 1 does. We have to deal with a forest of subgames. Notice that the subgame from C and from R have different optimal solutions! So we can't use the subgame-perfect equilibrium logic.
 
 
 ## 06 Richer Representations - Beyond the Normal and Extensive Forms
@@ -344,55 +370,53 @@ For many players, full payoff matrices are intractable. This notebook covers pol
 <p align="center">
   <img src="images/06 Richer Representations - Beyond the Normal and Extensive Forms/E - Computationally motivated compact representations_cell7_img1.svg" alt="MAID example" width="500"/>
 </p>
-<p align="center"><em>Multi-agent influence diagram showing two players (grey shades) deciding about a tree and patio. Rectangles are decisions, ovals are random events, diamonds are utilities. Dotted arrows indicate information flow; solid arrows indicate causal effects. The light grey player sees if the tree is sick and calls a doctor; the dark grey player poisons the tree and decides whether to build a patio.</em></p>
+<p align="center"><em>Multi-agent influence diagram showing two players (grey shades) deciding about a tree and patio. Rectangles are decisions, ovals are random events, diamonds are utilities. Dotted arrows indicate information flow; solid arrows indicate causal effects. </em></p>
 
 
 ## 07 Learning and Teaching
 
-Learning in game theory involves repeated or stochastic games where agents adapt over time. The key: it's not just learning in isolation - agents are learning about other agents who are also learning. It's key that players teach/learn from each other.
+Learning in game theory involves repeated or stochastic games where agents adapt over time. The key: it's not just learning in isolation - agents are learning about other agents who are also learning. Players teach and learn with each other.
 
 ---
 
 ### A - Why the Subject of "Learning" is Complex
 
-Learning in multiagent systems is fundamentally different from single-agent learning. The environment isn't stationary - when others change strategies, your optimal strategy changes. Additionally, intelligent agents aren't just learning but also teaching through their actions. Example: a player might play suboptimally in the short term to teach opponents they'll cooperate, enabling better long-term outcomes. The notebook distinguishes descriptive theories (how agents actually learn, e.g., converging to Nash equilibrium or empirical frequency equilibrium) from prescriptive theories (how agents should learn, with requirements like safety, rationality, and no-regret guarantees).
+Learning in multiagent systems is fundamentally different from single-agent learning. The environment isn't stationary - when others change strategies, your optimal strategy changes. Additionally, intelligent agents aren't just learning but also teaching through their actions. Example: a player might play suboptimally in the short term to teach opponents they'll cooperate, enabling better long-term outcomes. 
 
 ---
 
 ### B - Fictitious Play
 
-Fictitious play: each agent tracks the empirical frequency of opponents' past actions and best-responds to it. Agents maintain a count of how many times opponents played each action, normalize to get probabilities, then play a best response. Key properties: (1) pure-strategy Nash equilibria are steady states of fictitious play, and vice versa; (2) if empirical distributions converge, they converge to Nash equilibrium. Guaranteed convergence for: zero-sum games, games solvable by iterated elimination of strictly-dominated strategies, potential games, and 2×n games with generic payoffs. Rock-Paper-Scissors demonstrates non-steady-state convergence: no fixed pure strategies, but empirical frequencies converge to uniform (1/3, 1/3, 1/3) as expected.
+Fictitious play: each agent tracks the empirical frequency of opponents' past actions and best-responds to it. Agents maintain a count of how many times opponents played each action, normalize to get probabilities, then play a best response. Key properties: (1) pure-strategy Nash equilibria are steady states of fictitious play, and vice versa; (2) if empirical distributions converge, they converge to Nash equilibrium. Guaranteed convergence for: zero-sum games, games solvable by iterated elimination of strictly-dominated strategies, potential games, and 2×n games with generic payoffs. Rock-Paper-Scissors demonstrates non-steady-state convergence: no fixed pure strategies, but empirical frequencies converge to uniform (1/3, 1/3, 1/3), as expected.
 
 ---
 
 ### C - Rational Learning
 
-Rational learning extends fictitious play by allowing agents to model entire opponent strategies (like tit-for-tat or trigger strategies) rather than just action frequencies. Players maintain beliefs over a set of possible strategies, update via Bayesian inference after observing opponent actions, and choose best responses to their beliefs. Example: in repeated Prisoner's Dilemma, if an opponent cooperates for two rounds, a rational learner eliminates "always defect" and "trigger at t=0" from consideration, concentrating beliefs on longer-horizon strategies. The notebook includes a mistake probability to prevent beliefs from zeroing out (allowing for strategy changes). Converges to ε-equilibrium but requires careful tuning of belief updates and best-response functions.
+Rational learning extends fictitious play by allowing agents to model entire opponent strategies (like tit-for-tat or trigger strategies) rather than just action frequencies. Players maintain beliefs over a set of possible strategies, update via Bayesian inference after observing opponent actions, and choose best responses to their beliefs. Example: in repeated Prisoner's Dilemma, if an opponent cooperates for two rounds, a rational learner eliminates "always defect" and "trigger at t=0" from consideration, concentrating beliefs on longer-horizon strategies. Can include a mistake probability to prevent beliefs from zeroing out (allowing for strategy changes). Converges to ε-equilibrium but requires careful tuning of belief updates and best-response functions.
 
 ---
 
 ### D - Reinforcement Learning
 
-Reinforcement learning doesn't assume agents know transition probabilities or opponent payoffs. Q-learning updates action-values via Q(s,a) ← (1-α)Q(s,a) + α(r + γV(s')), with learning rate α declining as 1/t. The notebook demonstrates Q-learning on a simple 3-state MDP, showing convergence to optimal values without knowing transition matrices. For multiagent zero-sum games, extend Q to include opponent actions Q(s,a,o) and compute V via minimax: V(s) = max_a min_o Q(s,a,o). Example: a pursuit-evasion game on a 4-cell looping grid, where Q-learning with minimax finds mixed strategies for each position. The algorithm solves a linear program at each state to find minimax policies. Beyond zero-sum, Q-learning doesn't guarantee Nash convergence; belief-based variants model opponent behavior but lack theoretical guarantees.
+Reinforcement learning doesn't assume agents know transition probabilities or opponent payoffs. Q-learning updates action-values via Q(s,a) ← (1-α)Q(s,a) + α(r + γV(s')), with learning rate α declining as 1/t. The notebook demonstrates Q-learning on a simple 3-state MDP, showing convergence to optimal values without knowing transition matrices. For multiagent zero-sum games, extend Q to include opponent actions Q(s,a,o) and compute V via minimax: V(s) = max_a min_o Q(s,a,o).
 
 ---
 
 ### E - No-Regret Learning and Universal Consistency
 
-Regret measures the difference between your average reward and the reward from always playing some fixed pure strategy. A no-regret algorithm guarantees non-positive regret for all pure strategies. Regret matching: at each timestep, choose actions with probability proportional to their regret (how much better that action would have been). Example: in stag hunt, regret matching quickly converges to mutual cooperation (C,C) despite occasional exploration. Smooth fictitious play uses softmax over expected payoffs rather than deterministic best response. Key result: if all players use no-regret learning, empirical action frequencies converge to correlated equilibria. Targeted learning relaxes the strict requirement of performing well against all opponents, instead optimizing for a target class while maintaining safety (maxmin) against others and achieving Pareto efficiency in self-play.
+Regret measures the difference between your average reward and the reward from always playing some fixed pure strategy. A no-regret algorithm guarantees non-positive regret for all pure strategies. Regret matching: at each timestep, choose actions with probability proportional to their regret (how much better that action would have been). If all players use no-regret learning, empirical action frequencies converge to correlated equilibria. 
 
 ---
 
 ### F - Evolutionary Learning and Large Population Models
 
-When modeling many agents, use population-level dynamics. Let θ(a) be the fraction playing action a. Replicator dynamics: the growth rate of strategy a is θ(a)(u(a) - ū), where u(a) is the payoff to a and ū is the population average. Strategies above average grow; those below shrink. Example: coordination game starting at 45% heads, 55% tails converges to 100% tails. Nash equilibria correspond to steady states. Evolutionarily stable strategies (ESS) resist invasion by mutants - even with a small fraction of invaders, the original strategy has higher payoff. Every ESS is a Nash equilibrium and asymptotically stable. Agent-based simulations can model individual interactions and strategy updates, showing how conventions emerge through repeated pairwise interactions. These models guarantee payoffs at least as high as maxmin.
+When modeling many agents, use population-level dynamics with θ(a) being the fraction playing action a. The growth rate of strategy a is θ(a)(u(a) - ū), where u(a) is the payoff to a and ū is the population average. Strategies above average grow; those below shrink.
 
 
 ## 08 Communication
 
 So far we've assumed agents observe actions but don't communicate directly. This section explores when and how communication matters in strategic settings.
-
-The notebooks roughly split communication into *informational* views (messages update beliefs) and *motivational/strategic* views (messages/actions are chosen to influence others).
 
 ---
 
@@ -405,7 +429,7 @@ Does communication before the game change things? For Prisoner's Dilemma: well, 
 </p>
 <p align="center"><em>Game tree with pre-play cheap talk communication stage.</em></p>
 
-In games with multiple equilibria (Battle of the Sexes), cheap talk can help coordinate. You can see that doing the opposite of what was said is an equilibrium too... How confusing! Giotto's thought: communication is probably only applicable in repeated games.
+In games with multiple equilibria (Battle of the Sexes), cheap talk can help coordinate. You can see that doing the opposite of what was said is an equilibrium too... How confusing!
 
 ---
 
@@ -425,8 +449,6 @@ The challenge: Player 1's optimal action depends on what Player 2 will do, but P
 </p>
 <p align="center"><em>Two zero-sum games where Player 1 can signal the game type through action choice. If Player 1 always plays B, they average 2.5 regardless of Player 2's response, better than playing each game's Nash equilibrium (which would average 1.5).</em></p>
 
-Separating equilibria reveal information (different actions signal different types), while pooling equilibria hide it (same action regardless of type). Classic examples: education signaling ability (Spence), warranties signaling quality, peacock tails signaling fitness.
-
 ---
 
 ### C - Doing by Talking II (Speech-Act Theory)
@@ -438,9 +460,7 @@ Speech-act theory distinguishes three aspects of speech: locutionary (literal co
 </p>
 <p align="center"><em>Signaling game modeling ambiguous language. Nature determines whether a wooden chair or the meeting chair is coming. The speaker chooses clarity level (costly to be more specific). The listener infers meaning from ambiguous statements. Optimal strategy: be clear for the less likely event, use shorthand for the more likely one.</em></p>
 
-Game-theoretic view: Model conversation as a signaling game where speakers trade off clarity costs against listener comprehension. When the wooden chair is rare, speakers say "the wooden chair..." but shorten to "the chair..." for the common case (meeting chair), with listeners inferring accordingly. The equilibrium minimizes expected communication cost while avoiding costly misunderstandings.
-
-Applications: TRAINS/TRIPS dialog systems, workflow systems with speech acts (report/acknowledge), agent communication languages (XML-based), and rational programming languages where code can make commitments (Agent0, Elephant2000).
+Tied up with the value of information.
 
 
 ## 09 Aggregating preferences, social choice
@@ -451,17 +471,11 @@ It is often difficult to measure true utilities, so one alternative is to ask fo
 
 ### A - Models and Voting, Social Functions, Ranking Systems
 
-The notebook starts with a simple formal model of preference profiles and aggregation, then walks through voting rules, social functions, and ranking systems.
-
 A social choice function maps individual preferences to a collective outcome. Condorcet winner: beats every other candidate in pairwise votes, but doesn't always exist (cycles can occur).
 
 Common voting systems: Plurality (spoiler effects), Borda count (manipulable), instant runoff (non-monotonic), approval voting (loses ranking info), range/quadratic voting.
 
-It also distinguishes social welfare functions (aggregate into a ranking) from social choice functions (pick a single outcome).
-
 Arrow's impossibility theorem: No social choice function can simultaneously satisfy Pareto efficiency, independence of irrelevant alternatives, and non-dictatorship.
-
-The notebook’s main takeaway for me is how many “reasonable-sounding” desiderata conflict, and how system choice depends on what failure modes you’re willing to accept.
 
 
 ## 10 Protocols for Strategic Agents - Mechanism Design
@@ -474,21 +488,6 @@ Mechanism design is about getting agents to behave in desirable ways. E.g., to b
 
 A mechanism consists of messages agents can send and an outcome function. A social choice function specifies what outcome should occur for each preference profile. Can we design a mechanism that implements this?
 
-Implementation in dominant strategies: Truth-telling is optimal regardless of what others do.
-
 The revelation principle: Any mechanism can be converted to a direct mechanism where agents report types truthfully. Because the original mechanism is designed such that agents have dominant strategies there is no reason to lie.
 
-Gibbard-Satterthwaite theorem: With three or more outcomes and unrestricted preferences, the only dominant-strategy implementable social choice functions are dictatorships. Another impossibility result!
-
-Escaping impossibility: Restrict preference domains, use money/transfers (VCG mechanisms), weaken solution concept, or accept approximation.
-
 Vickrey auction: Second-price sealed-bid where highest bidder pays second-highest bid. Truthful bidding is dominant!
-
-<p align="center">
-  <img src="images/10 Protocols for Strategic Agents - Mechanism Design/A - Mechanism design with unrestricted preferences_cell3_img1.svg" alt="Mechanism design example" width="500"/>
-</p>
-<p align="center"><em>Visual representation of mechanism design concepts.</em></p>
-
-VCG (Vickrey-Clarke-Groves) mechanisms: Dominant-strategy incentive compatible, efficient, and individually rational. Each agent pays their "externality" - the harm they impose on others.
-
-Of course, saying something like *if both players prefer A then they get A* is just more social choice bogus. A more sensible way to think about it is that we have our own utility function that depends on the success of the players.
