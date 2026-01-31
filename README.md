@@ -465,17 +465,19 @@ Tied up with the value of information.
 
 ## 09 Aggregating preferences, social choice
 
-It is often difficult to measure true utilities, so one alternative is to ask for *ordinal* preferences instead (e.g., “do you prefer A or B?”). The downside is you lose a lot of information about intensity of preference, which makes trade-offs and efficiency trickier.
+Everything before has assumed clear utility functions. But in many cases you can't get utilities without them being gamed or misreported. Instead you can ask for preferences, i.e., choose A or B.
 
 ---
 
 ### A - Models and Voting, Social Functions, Ranking Systems
 
-A social choice function maps individual preferences to a collective outcome. Condorcet winner: beats every other candidate in pairwise votes, but doesn't always exist (cycles can occur).
+This notebook explores what properties we want from voting systems and why that's surprisingly difficult.
 
-Common voting systems: Plurality (spoiler effects), Borda count (manipulable), instant runoff (non-monotonic), approval voting (loses ranking info), range/quadratic voting.
+A sensible approach is to meet the Condorcet condition, where an option is selected if it beats every other in pairwise majority comparisons. But this doesn't always work, often there is no Condorcet winner. Plurality voting, Borda voting, pairwise elimination, and approval voting are explored.
 
-Arrow's impossibility theorem: No social choice function can simultaneously satisfy Pareto efficiency, independence of irrelevant alternatives, and non-dictatorship.
+Arrow's Impossibility Theorem is presented, where any social welfare function that produces a full ranking of outcomes must violate at least one of three basic fairness properties: Pareto efficiency (if everyone prefers A to B, rank A higher), independence of irrelevant alternatives (the ranking of A vs B shouldn't depend on C), or non-dictatorship (no single person determines everything). The proof shows that any decisive coalition, one that can force a ranking, can be split into smaller decisive coalitions recursively until you reach a single dictator.
+
+There are some positive results if you restrict the problem. If outcomes are just the agents themselves and each agent has binary preferences (approve/disapprove), then approval voting satisfies analogous fairness conditions. For ranking systems in this setting, you can build iterative algorithms where votes propagate through the preference graph, achieving weaker but still meaningful fairness properties.
 
 
 ## 10 Protocols for Strategic Agents - Mechanism Design
